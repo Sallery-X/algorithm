@@ -1,0 +1,14 @@
+package bytedance
+
+import (
+	"fmt"
+	"testing"
+)
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	testStr := "bbabcd"
+	maxLen := LengthOfLongestSubstring(testStr)
+	fmt.Println(maxLen)
+	maxlen2 := LengthOfLongestSubstring2(testStr)
+	fmt.Println(maxlen2)
+}
