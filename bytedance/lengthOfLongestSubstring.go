@@ -7,6 +7,8 @@ package bytedance
 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 */
 
+//https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/
+
 // 暴力破解思路： 找出所有的子串，判断每个是否有重复的
 func LengthOfLongestSubstring(inputString string) int {
 	if len(inputString) <= 1 {
