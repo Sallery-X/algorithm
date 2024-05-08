@@ -1,5 +1,7 @@
 package bytedance
 
+import "fmt"
+
 /// 最长无重复字串
 /*
 输入: s = "abcabcbb"
@@ -61,9 +63,15 @@ func LengthOfLongestSubstring2(inputStr string) int {
 	left := 0
 	dup := make(map[string]int)
 	for right := 0; right < len(inputStr); right++ {
+		//如果放入的字符有重复，更新左指针，移动到当前位置，确保后续开始的位置不再包含之前的重复字符
+		// 如果不设置 index >= left , index 可能取到之前的值
 		if index, ok := dup[inputStr[right:right+1]]; ok && index >= left {
 			left = index + 1
+			fmt.Println(left)
+			fmt.Println(right)
 		}
+
+		// 放入每个字符和索引位置
 		dup[inputStr[right:right+1]] = right
 
 		curLength := right - left + 1
