@@ -13,4 +13,7 @@ func main() {
 	x, ok := vv["x"]
 	fmt.Println(ok)
 	fmt.Println(x)
+
+	var result []int
+	result = append(result, 1, 2)
 }
