@@ -50,7 +50,6 @@ func quickSort(start, end int, arr []int) {
 			arr[i], arr[j] = arr[j], arr[i]
 		}
 
-		return
 		//第一次排完 左边都比k小 右边比k大
 		for _, v := range arr {
 			fmt.Print(v)
