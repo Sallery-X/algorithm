@@ -47,19 +47,16 @@ func quickSort(start, end int, nums []int, kk int) int {
 		for i < j && nums[j] <= k {
 			j--
 		}
-		if i < j {
-			nums[i], nums[j] = nums[j], nums[i]
-			i++
-		}
 		// 从左向右找第一个小于 k 的元素
 		for i < j && nums[i] >= k {
 			i++
 		}
 		if i < j {
 			nums[i], nums[j] = nums[j], nums[i]
-			j--
 		}
 	}
+
+	nums[i], nums[start] = nums[start], nums[i]
 
 	if i == kk-1 {
 		return nums[i]
