@@ -1,7 +1,5 @@
 package bytedance
 
-import "fmt"
-
 func findKthLargest(nums []int, k int) int {
 	return Partition(nums, k)
 }
@@ -35,27 +33,40 @@ func Partition(nums []int, k int) int { //快排
 	}
 }
 
-func quickSort(start, end int, arr []int) {
+func quickSort(start, end int, nums []int, kk int) int {
+	//if start >= end {
+	//	return start
+	//}
+
 	i := start
 	j := end
-	k := arr[start]
-	if i < j {
-		for i < j {
-			for arr[i] < k {
-				i++
-			}
-			for arr[j] > k {
-				j--
-			}
-			arr[i], arr[j] = arr[j], arr[i]
-		}
+	k := nums[start]
 
-		//第一次排完 左边都比k小 右边比k大
-		for _, v := range arr {
-			fmt.Print(v)
-			fmt.Print(" ")
+	for i < j {
+		// 从右向左找第一个大于 k 的元素
+		for i < j && nums[j] <= k {
+			j--
 		}
-		quickSort(start, i-1, arr)
-		quickSort(j+1, end, arr)
+		if i < j {
+			nums[i], nums[j] = nums[j], nums[i]
+			i++
+		}
+		// 从左向右找第一个小于 k 的元素
+		for i < j && nums[i] >= k {
+			i++
+		}
+		if i < j {
+			nums[i], nums[j] = nums[j], nums[i]
+			j--
+		}
 	}
+
+	if i == kk-1 {
+		return nums[i]
+	} else if kk-1 > i {
+		return quickSort(j+1, end, nums, kk)
+	} else {
+		return quickSort(start, i-1, nums, kk)
+	}
+
 }
