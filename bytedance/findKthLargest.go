@@ -67,3 +67,33 @@ func quickSort(start, end int, nums []int, kk int) int {
 	}
 
 }
+
+func quickSort2(start, end int, nums []int) {
+	if start >= end {
+		return
+	}
+
+	i := start
+	j := end
+
+	base := nums[start]
+
+	for i < j {
+		for i < j && base >= nums[j] {
+			j--
+		}
+
+		for i < j && base <= nums[i] {
+			i++
+		}
+
+		if i < j {
+			nums[i], nums[j] = nums[j], nums[i]
+		}
+	}
+	nums[i], nums[start] = nums[start], nums[i]
+
+	quickSort2(start, i-1, nums)
+	quickSort2(j+1, end, nums)
+
+}
