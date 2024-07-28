@@ -3,6 +3,12 @@ package bytedance
 import "fmt"
 
 func NMatrix(n int) {
+	/*
+		6 5 4
+		7 0 3
+		8 1 2
+	*/
+
 	// 创建一个 n*n 的矩阵
 	matrix := make([][]int, n)
 	for i := range matrix {
