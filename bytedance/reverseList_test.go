@@ -17,7 +17,7 @@ func TestReverseLinkedList(t *testing.T) {
 		},
 	}
 
-	head := ReverseLinkedList2(&node0)
+	head := ReverseLinkedList(&node0)
 	for head != nil {
 		fmt.Println(head.Val)
 		head = head.Next
