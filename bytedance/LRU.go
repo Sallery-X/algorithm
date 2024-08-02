@@ -12,52 +12,52 @@ type Node struct {
 	Pre, Next *Node
 }
 
-func (this *LRUCache) Get(key int) int {
-	if v, ok := this.m[key]; ok {
-		this.moveToHead(v)
+func (l *LRUCache) Get(key int) int {
+	if v, ok := l.m[key]; ok {
+		l.moveToHead(v)
 		return v.Value
 	}
 	return -1
 }
 
-func (this *LRUCache) moveToHead(node *Node) {
-	this.deleteNode(node)
-	this.addToHead(node)
+func (l *LRUCache) moveToHead(node *Node) {
+	l.deleteNode(node)
+	l.addToHead(node)
 }
 
-func (this *LRUCache) deleteNode(node *Node) {
+func (l *LRUCache) deleteNode(node *Node) {
 	node.Pre.Next = node.Next
 	node.Next.Pre = node.Pre
 }
 
-func (this *LRUCache) removeTail() int {
-	node := this.tail.Pre
-	this.deleteNode(node)
+func (l *LRUCache) removeTail() int {
+	node := l.tail.Pre
+	l.deleteNode(node)
 	return node.Key
 }
 
-func (this *LRUCache) addToHead(node *Node) {
-	this.head.Next.Pre = node
-	node.Next = this.head.Next
-	node.Pre = this.head
-	this.head.Next = node
+func (l *LRUCache) addToHead(node *Node) {
+	l.head.Next.Pre = node
+	node.Next = l.head.Next
+	node.Pre = l.head
+	l.head.Next = node
 }
 
-func (this *LRUCache) Put(key int, value int) {
-	if v, ok := this.m[key]; ok {
+func (l *LRUCache) Put(key int, value int) {
+	if v, ok := l.m[key]; ok {
 		v.Value = value
-		this.moveToHead(v)
+		l.moveToHead(v)
 		return
 	}
 
-	if this.capacity == len(this.m) {
-		rmKey := this.removeTail()
-		delete(this.m, rmKey)
+	if l.capacity == len(l.m) {
+		rmKey := l.removeTail()
+		delete(l.m, rmKey)
 	}
 
 	newNode := &Node{Key: key, Value: value}
-	this.addToHead(newNode)
-	this.m[key] = newNode
+	l.addToHead(newNode)
+	l.m[key] = newNode
 }
 
 func NewLruCache(capacity int) *LRUCache {
