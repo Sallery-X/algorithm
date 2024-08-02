@@ -29,7 +29,7 @@ func TestKReverseLinkedList(t *testing.T) {
 		},
 	}
 
-	head := reverseKGroup(&node0, 2)
+	head := realKr(&node0, 2)
 	for head != nil {
 		fmt.Print(head.Val, "->")
 		head = head.Next
