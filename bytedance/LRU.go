@@ -60,6 +60,7 @@ func (l *LRUCache) Put(key int, value int) {
 	l.m[key] = newNode
 }
 
+// 头尾都是空的
 func NewLruCache(capacity int) *LRUCache {
 	head, tail := &Node{}, &Node{}
 	head.Next = tail

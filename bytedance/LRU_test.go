@@ -11,6 +11,7 @@ func TestLruCache(t *testing.T) {
 	l.Put(2, 2)
 	l.Put(3, 3)
 	l.Put(4, 4)
+	fmt.Println(l.head.Value)
 
 	x := l.Get(1)
 	//fmt.Println(l.values)
