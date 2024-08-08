@@ -17,4 +17,7 @@ func TestFindKthLargest(t *testing.T) {
 	quickSort2(0, len(nums)-1, nums)
 	fmt.Println(nums)
 
+	nums = []int{0, 11, 5, 6, 7, 8, 2, 4, 9, 10}
+	quiks(nums, 0, len(nums)-1)
+	fmt.Println(nums)
 }
