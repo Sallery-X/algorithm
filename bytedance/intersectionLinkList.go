@@ -1,5 +1,7 @@
 package bytedance
 
+//https://leetcode.cn/problems/intersection-of-two-linked-lists/description/
+
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	if headA == nil || headB == nil {
 		return nil
