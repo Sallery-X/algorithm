@@ -38,13 +38,18 @@ func maxProfit(price []int) int {
 }
 
 func maxProfit2(price []int) int {
+	//存最大利润
 	maxP := 0
+	//存最小价格
 	minPr := math.MaxInt
 	for i := 0; i < len(price); i++ {
+		//更新最小价格
 		if minPr > price[i] {
 			minPr = price[i]
 		}
+		//当天价格减最小值
 		pro := price[i] - minPr
+		//获取最大利润
 		if pro > maxP {
 			maxP = pro
 		}
