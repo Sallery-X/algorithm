@@ -33,68 +33,38 @@ func Partition(nums []int, k int) int { //快排
 	}
 }
 
-func quickSort(start, end int, nums []int, kk int) int {
+func quickSort(start, end int, nums []int, k int) int {
 	//if start >= end {
 	//	return start
 	//}
 
 	i := start
 	j := end
-	k := nums[start]
-
-	for i < j {
-		// 从右向左找第一个大于 k 的元素
-		for i < j && nums[j] <= k {
-			j--
-		}
-		// 从左向右找第一个小于 k 的元素
-		for i < j && nums[i] >= k {
-			i++
-		}
-		if i < j {
-			nums[i], nums[j] = nums[j], nums[i]
-		}
-	}
-
-	nums[i], nums[start] = nums[start], nums[i]
-
-	if i == kk-1 {
-		return nums[i]
-	} else if kk-1 > i {
-		return quickSort(j+1, end, nums, kk)
-	} else {
-		return quickSort(start, i-1, nums, kk)
-	}
-
-}
-
-func quickSort2(start, end int, nums []int) {
-	if start >= end {
-		return
-	}
-
-	i := start
-	j := end
-
 	base := nums[start]
 
 	for i < j {
-		for i < j && base >= nums[j] {
+		// 从右向左找第一个大于 k 的元素
+		for i < j && nums[j] <= base {
 			j--
 		}
-
-		for i < j && base <= nums[i] {
+		// 从左向右找第一个小于 k 的元素
+		for i < j && nums[i] >= base {
 			i++
 		}
-
 		if i < j {
 			nums[i], nums[j] = nums[j], nums[i]
 		}
 	}
+
 	nums[i], nums[start] = nums[start], nums[i]
 
-	quickSort2(start, i-1, nums)
-	quickSort2(j+1, end, nums)
+	if i == k-1 {
+		return nums[i]
+	} else if k-1 > i {
+		return quickSort(j+1, end, nums, k)
+	} else {
+		return quickSort(start, i-1, nums, k)
+	}
 
 }
 
