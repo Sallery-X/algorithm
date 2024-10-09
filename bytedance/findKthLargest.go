@@ -76,10 +76,10 @@ func quiks(nums []int, start, end int) {
 	j := end
 	base := nums[start]
 	for i < j {
-		for i < j && base <= nums[j] {
+		for i < j && nums[j] >= base {
 			j--
 		}
-		for i < j && base >= nums[i] {
+		for i < j && nums[i] <= base {
 			i++
 		}
 		if i < j {

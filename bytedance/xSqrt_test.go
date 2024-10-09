@@ -6,5 +6,5 @@ import (
 )
 
 func Test_mySqrt(t *testing.T) {
-	fmt.Println(mySqrt(1))
+	fmt.Println(mySqrt(5))
 }
