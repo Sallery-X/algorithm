@@ -4,6 +4,13 @@ import (
 	"sort"
 )
 
+/*
+
+下一个排列
+输入：nums = [3,2,1]
+输出：[1,2,3]
+*/
+
 func nextPermutation(nums []int) {
 	i := len(nums) - 2
 	for i >= 0 {
