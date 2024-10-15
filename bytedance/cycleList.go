@@ -14,19 +14,16 @@ func hasCycle(head *ListNode) bool {
 }
 
 func hasCycle2(head *ListNode) bool {
-	if head == nil || head.Next == nil {
-		return false
-	}
 
-	slow := head
-	fast := head.Next
-
-	for slow != fast {
-		if fast == nil || fast.Next == nil {
-			return false
-		}
+	slow, fast := head, head
+	has := false
+	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
+		if slow == fast {
+			has = true
+			break
+		}
 	}
-	return true
+	return has
 }
