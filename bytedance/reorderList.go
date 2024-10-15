@@ -18,6 +18,7 @@ func reorderList(head *ListNode) {
 	l1, slow := findMid(head)
 
 	l2 := reverse(slow)
+	// 都为nil
 	for l1 != l2 {
 		n1 := l1.Next
 		n2 := l2.Next
