@@ -24,20 +24,20 @@ import "math"
 解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
 */
 
-func maxProfit(price []int) int {
-	maxP := 0
-	for i := 0; i < len(price)-1; i++ {
-		for j := i + 1; j < len(price); j++ {
-			pro := price[j] - price[i]
-			if pro > maxP {
-				maxP = pro
-			}
-		}
-	}
-	return maxP
-}
+//func maxProfit(price []int) int {
+//	maxP := 0
+//	for i := 0; i < len(price)-1; i++ {
+//		for j := i + 1; j < len(price); j++ {
+//			pro := price[j] - price[i]
+//			if pro > maxP {
+//				maxP = pro
+//			}
+//		}
+//	}
+//	return maxP
+//}
 
-func maxProfit2(price []int) int {
+func maxProfit(price []int) int {
 	//存最大利润
 	maxP := 0
 	//存最小价格
