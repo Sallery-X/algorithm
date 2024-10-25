@@ -2,6 +2,7 @@ package bytedance
 
 import "fmt"
 
+// 旋转数组
 func rotate(matrix [][]int) {
 	n := len(matrix)
 
