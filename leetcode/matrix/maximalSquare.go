@@ -1,5 +1,6 @@
-package leetcode
+package matrix
 
+// 最大正方形面积
 func maximalSquare(matrix [][]byte) int {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return 0

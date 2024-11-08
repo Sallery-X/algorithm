@@ -6,6 +6,6 @@ import (
 )
 
 func Test_longestValidParentheses(t *testing.T) {
-	nums := "()(()"
+	nums := ")()"
 	fmt.Println(longestValidParentheses(nums))
 }

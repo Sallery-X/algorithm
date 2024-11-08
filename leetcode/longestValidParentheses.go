@@ -5,6 +5,7 @@ import (
 	"math"
 )
 
+// / 最长有效括号
 func longestValidParentheses(s string) int {
 
 	stack := list.New()
