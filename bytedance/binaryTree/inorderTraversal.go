@@ -1,14 +1,12 @@
 package bytedance
 
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
+// 中序遍历二叉树
 func inorderTraversal(root *TreeNode) []int {
 	var res []int
 	inorderTraversalHelper(root, &res)

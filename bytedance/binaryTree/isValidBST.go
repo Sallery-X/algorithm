@@ -1,6 +1,8 @@
 package bytedance
 
-import "math"
+import (
+	"math"
+)
 
 /**
  * Definition for a binary tree node.
@@ -10,6 +12,7 @@ import "math"
  *     Right *TreeNode
  * }
  */
+// 是否为二叉搜索树
 func isValidBST(root *TreeNode) bool {
 	return helper2(root, math.MinInt, math.MaxInt)
 }

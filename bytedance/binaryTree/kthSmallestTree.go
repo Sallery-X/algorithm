@@ -8,6 +8,8 @@ package bytedance
  *     Right *TreeNode
  * }
  */
+
+// 二叉搜索树，第k小的值是多少
 func kthSmallest(root *TreeNode, k int) int {
 	var count int
 	res := -1

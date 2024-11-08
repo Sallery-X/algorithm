@@ -17,5 +17,5 @@ func Test_isCompleteTree(t *testing.T) {
 			Left: nil,
 		},
 	}
-	fmt.Println(isCompleteTree(&node))
+	fmt.Println(isCompleteTree2(&node))
 }

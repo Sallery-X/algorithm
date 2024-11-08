@@ -8,6 +8,7 @@ type Tree struct {
 	value int
 }
 
+// 对称二叉树
 func IsSymmetric(root *Tree) bool {
 	fmt.Println(judge2(root, root))
 	return judge(root, root)

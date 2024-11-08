@@ -1,6 +1,8 @@
 package bytedance
 
-import "container/list"
+import (
+	"container/list"
+)
 
 func zigzagLevelOrder(root *TreeNode) [][]int {
 	if root == nil {

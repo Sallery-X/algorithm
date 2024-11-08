@@ -32,6 +32,8 @@ p 和 q 均存在于给定的二叉树中。
 //	Right *TreeNode
 //}
 
+// 最近公共祖先
+
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if root == nil || root == p || root == q {
 		return root

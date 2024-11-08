@@ -1,6 +1,8 @@
 package bytedance
 
-import "container/list"
+import (
+	"container/list"
+)
 
 func rightSideView(root *TreeNode) []int {
 	if root == nil {

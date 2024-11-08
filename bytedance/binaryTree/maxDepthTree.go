@@ -8,6 +8,8 @@ package bytedance
  *     Right *TreeNode
  * }
  */
+
+// 二叉树的高度
 func maxDepth(root *TreeNode) int {
 	if root == nil {
 		return 0

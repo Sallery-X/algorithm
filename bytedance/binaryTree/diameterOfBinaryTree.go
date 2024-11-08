@@ -8,23 +8,26 @@ package bytedance
  *     Right *TreeNode
  * }
  */
+
+// 二叉树的直径
 func diameterOfBinaryTree(root *TreeNode) int {
-	maxD = 1
-	depth(root)
+	maxD := 0
+	depth(root, &maxD)
 	return maxD
 
 }
 
-var maxD int
-
-func depth(root *TreeNode) int {
+func depth(root *TreeNode, m *int) int {
 	if root == nil {
 		return 0
 	}
 
-	left := diameterOfBinaryTree(root.Left)
-	right := diameterOfBinaryTree(root.Right)
-	maxD = max(maxD, left+right)
+	left := depth(root.Left, m)
+	right := depth(root.Right, m)
 
+	//二叉树最大直径
+	*m = max(*m, left+right)
+
+	//当前树高度
 	return max(left, right) + 1
 }

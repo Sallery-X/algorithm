@@ -1,6 +1,8 @@
 package bytedance
 
-import "math"
+import (
+	"math"
+)
 
 /**
  * Definition for a binary tree node.
@@ -10,7 +12,7 @@ import "math"
  *     Right *TreeNode
  * }
  */
-
+// 最大路径和
 var maxSum = math.MinInt32
 
 func maxPathSum(root *TreeNode) int {
