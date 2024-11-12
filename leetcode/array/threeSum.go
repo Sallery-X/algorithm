@@ -11,15 +11,13 @@ import "sort"
 */
 
 func treeSum(nums []int) [][]int {
-
+	var res [][]int
 	sort.Ints(nums)
-	result := make([][]int, 0)
 
 	for i := 0; i < len(nums)-2; i++ {
 		if nums[i] > 0 {
 			break
 		}
-
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
@@ -28,27 +26,29 @@ func treeSum(nums []int) [][]int {
 		r := len(nums) - 1
 
 		for l < r {
-			sum := nums[i] + nums[l] + nums[r]
+			sum := nums[i] + nums[r] + nums[l]
 			if sum == 0 {
-				line := make([]int, 0)
-				line = append(line, nums[i], nums[l], nums[r])
-				result = append(result, line)
-				r--
-				l++
-				for l < r && nums[r] == nums[r+1] {
-					r--
-				}
-				for l < r && nums[l] == nums[l-1] {
+				res = append(res, []int{nums[i], nums[l], nums[r]})
+				for l < r && nums[l] == nums[l+1] {
 					l++
 				}
+				for l < r && nums[r] == nums[r-1] {
+					r--
+				}
+				l++
+				r--
 			}
+
 			if sum > 0 {
 				r--
 			}
+
 			if sum < 0 {
 				l++
 			}
 		}
+
 	}
-	return result
+
+	return res
 }
