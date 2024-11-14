@@ -1,7 +1,5 @@
 package array
 
-import "fmt"
-
 func permute(nums []int) [][]int {
 	var res [][]int
 
@@ -12,7 +10,7 @@ func permute(nums []int) [][]int {
 
 func dfs2(path []int, used []bool, nums []int, res *[][]int) {
 
-	fmt.Println(path)
+	//fmt.Println(path)
 	if len(path) == len(nums) {
 		temp := make([]int, len(path))
 		copy(temp, path)
