@@ -15,6 +15,7 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 			if text1[i-1] == text2[j-1] {
 				dp[i][j] = dp[i-1][j-1] + 1
 			} else {
+				//需要统计之前公共的最大值
 				dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 			}
 		}
