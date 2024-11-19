@@ -14,9 +14,11 @@ func inorderTraversal(root *TreeNode) []int {
 }
 
 func inorderTraversalHelper(root *TreeNode, res *[]int) {
-	if root != nil {
-		inorderTraversalHelper(root.Left, res)
-		*res = append(*res, root.Val)
-		inorderTraversalHelper(root.Right, res)
+	if root == nil {
+		return
 	}
+	inorderTraversalHelper(root.Left, res)
+	*res = append(*res, root.Val)
+	inorderTraversalHelper(root.Right, res)
+
 }
