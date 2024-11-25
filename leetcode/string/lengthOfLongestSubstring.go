@@ -1,6 +1,8 @@
 package string
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /// 最长无重复字串
 /*
