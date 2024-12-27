@@ -10,6 +10,7 @@ func reverse3(head, tail *ListNode) (*ListNode, *ListNode) {
 
 	cur := head
 
+	// 前一个不是最后一个节点继续，当前节点是最后一个时，代表已经反转完毕
 	for pre != tail {
 		temp := cur.Next
 		cur.Next = pre
