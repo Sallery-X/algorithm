@@ -76,10 +76,5 @@ func NewLruCache(capacity int) *LRUCache {
 	head, tail := &Node{}, &Node{}
 	head.Next = tail
 	tail.Pre = head
-	return &LRUCache{
-		capacity: capacity,
-		m:        map[int]*Node{},
-		head:     head,
-		tail:     tail,
-	}
+	return &LRUCache{capacity: capacity, m: make(map[int]*Node), head: head, tail: tail}
 }

@@ -7,5 +7,5 @@ import (
 
 func Test_preorderTraversal(t *testing.T) {
 	x := &TreeNode{1, &TreeNode{2, nil, nil}, &TreeNode{3, nil, nil}}
-	fmt.Println(preorderTraversal(x))
+	fmt.Println(preorderTraversal2(x))
 }
