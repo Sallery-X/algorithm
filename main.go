@@ -1,8 +1,10 @@
 package main
 
+/*
+
 import "fmt"
 
-func main() {
+func xx() {
 	fmt.Println("xx")
 	v := "abcd"
 	fmt.Println(v[0:1])
@@ -17,3 +19,4 @@ func main() {
 	var result []int
 	result = append(result, 1, 2)
 }
+*/
