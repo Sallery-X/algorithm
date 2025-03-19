@@ -31,5 +31,7 @@ func Test_getIntersectionNode(t *testing.T) {
 	}}
 
 	x := getIntersectionNode(&listA, &listB)
+	y := getIntersectionNode2(&listA, &listB)
+	fmt.Println(y)
 	fmt.Println(x)
 }
