@@ -12,69 +12,75 @@ package leetcode
 */
 
 type LRUCache struct {
-	capacity   int
+	cap        int
 	m          map[int]*Node
 	head, tail *Node
 }
 
 type Node struct {
-	Key       int
-	Value     int
-	Pre, Next *Node
+	key, val  int
+	pre, next *Node
+}
+
+func NewLRUCache(capacity int) LRUCache {
+	head, tail := &Node{}, &Node{}
+	head.next = tail
+	tail.pre = head
+	return LRUCache{
+		cap:  capacity,
+		m:    make(map[int]*Node),
+		head: head,
+		tail: tail,
+	}
 }
 
 func (l *LRUCache) Get(key int) int {
-	if v, ok := l.m[key]; ok {
-		l.moveToHead(v)
-		return v.Value
+	if node, ok := l.m[key]; ok {
+		l.moveToHead(node)
+		return node.val
 	}
 	return -1
 }
 
-func (l *LRUCache) moveToHead(node *Node) {
-	l.deleteNode(node)
+func (l *LRUCache) Put(key, val int) {
+	if node, ok := l.m[key]; ok {
+		node.val = val
+		l.moveToHead(node)
+		return
+	}
+	if len(l.m) == l.cap {
+		last := l.removeTail()
+		delete(l.m, last.key)
+	}
+
+	node := &Node{
+		key: key,
+		val: val,
+	}
+	l.m[key] = node
 	l.addToHead(node)
-}
-
-func (l *LRUCache) deleteNode(node *Node) {
-	node.Pre.Next = node.Next
-	node.Next.Pre = node.Pre
-}
-
-func (l *LRUCache) removeTail() int {
-	node := l.tail.Pre
-	l.deleteNode(node)
-	return node.Key
+	return
 }
 
 func (l *LRUCache) addToHead(node *Node) {
-	l.head.Next.Pre = node
-	node.Next = l.head.Next
-	node.Pre = l.head
-	l.head.Next = node
+	l.head.next.pre = node
+	node.next = l.head.next
+	node.pre = l.head
+	l.head.next = node
+
 }
-
-func (l *LRUCache) Put(key int, value int) {
-	if v, ok := l.m[key]; ok {
-		v.Value = value
-		l.moveToHead(v)
-		return
-	}
-
-	if l.capacity == len(l.m) {
-		rmKey := l.removeTail()
-		delete(l.m, rmKey)
-	}
-
-	newNode := &Node{Key: key, Value: value}
-	l.addToHead(newNode)
-	l.m[key] = newNode
+func (l *LRUCache) removeTail() *Node {
+	node := l.tail.pre
+	l.removeNode(node)
+	return node
 }
-
-// 头尾都是空的
-func NewLruCache(capacity int) *LRUCache {
-	head, tail := &Node{}, &Node{}
-	head.Next = tail
-	tail.Pre = head
-	return &LRUCache{capacity: capacity, m: make(map[int]*Node), head: head, tail: tail}
+func (l *LRUCache) moveToHead(node *Node) {
+	l.removeNode(node)
+	l.addToHead(node)
+}
+func (l *LRUCache) removeNode(node *Node) {
+	pre := node.pre
+	next := node.next
+	pre.next = next
+	next.pre = pre
 }
