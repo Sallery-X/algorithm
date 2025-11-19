@@ -78,31 +78,32 @@ func zigZagLevelOrder(root *TreeNode) [][]int {
 }
 
 func LevelOrder2(root *TreeNode) [][]int {
-	var res [][]int
-	queue := make([]*TreeNode, 0)
-	if root != nil {
-		queue = append(queue, root)
+	var result [][]int
+	if root == nil {
+		return nil
 	}
+	stack := make([]*TreeNode, 0)
+	stack = append(stack, root)
 
-	for len(queue) > 0 {
-		size := len(queue)
+	for len(stack) != 0 {
 		level := make([]int, 0)
+		size := len(stack)
 		for i := 0; i < size; i++ {
-			top := queue[0]
-			queue = queue[1:]
-			if top != nil {
-				level = append(level, top.Val)
-				if top.Left != nil {
-					queue = append(queue, top.Left)
+			node := stack[0]
+			stack = stack[1:]
+			if node != nil {
+				level = append(level, node.Val)
+				if node.Left != nil {
+					stack = append(stack, node.Left)
 				}
-				if top.Right != nil {
-					queue = append(queue, top.Right)
+				if node.Right != nil {
+					stack = append(stack, node.Right)
 				}
 			}
 		}
-		res = append(res, level)
-	}
+		result = append(result, level)
 
-	return res
+	}
+	return result
 
 }
