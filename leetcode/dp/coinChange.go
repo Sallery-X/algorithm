@@ -14,9 +14,12 @@ func coinChange(coins []int, amount int) int {
 	dp[0] = 0
 	for i := 1; i <= amount; i++ {
 		for j := 0; j < len(coins); j++ {
-			if i-coins[j] >= 0 {
-				dp[i] = int(math.Min(float64(dp[i]), float64(dp[i-coins[j]]+1)))
+			//字问题无解
+			if i-coins[j] < 0 {
+				continue
 			}
+			dp[i] = int(math.Min(float64(dp[i]), float64(dp[i-coins[j]]+1)))
+
 		}
 	}
 	if dp[amount] == math.MaxInt32 {
