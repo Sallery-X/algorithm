@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
-
+/*
 // 计算区间和
 func main() {
 	// 读取n
@@ -43,3 +40,4 @@ func main() {
 		fmt.Println(sum)
 	}
 }
+*/

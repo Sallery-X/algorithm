@@ -1,5 +1,9 @@
 package leetcode
 
+// "有序数组平方后不同值的个数" 问题（可以看作是 LeetCode 977 "有序数组的平方" 的变种）。
+//输入假设：nums 是一个升序排列的整数数组（可能包含负数）
+//例如：[-4, -2, 0, 1, 3]
+
 func res(nums []int) int {
 	res := 1
 	left := 0
@@ -17,7 +21,7 @@ func res(nums []int) int {
 			}
 			left++
 		} else {
-			if cur != right {
+			if cur != rightV {
 				res++
 				cur = nums[right] * nums[right]
 			}
