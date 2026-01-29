@@ -83,3 +83,22 @@ func LengthOfLongestSubstring2(inputStr string) int {
 	}
 	return maxLen
 }
+
+func longestSubstring(s string) int {
+	maxLen := 0
+	left := 0
+	dup := make(map[string]int)
+	for right := 0; right < len(s); right++ {
+		if index, ok := dup[s[right:right+1]]; ok && index >= left {
+			left = index + 1
+		}
+		dup[s[right:right+1]] = right
+
+		curLength := right - left + 1
+		if curLength > maxLen {
+			maxLen = curLength
+		}
+	}
+	return maxLen
+
+}
