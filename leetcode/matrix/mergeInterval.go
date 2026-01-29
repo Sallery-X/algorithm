@@ -1,7 +1,6 @@
 package matrix
 
 import (
-	"math"
 	"sort"
 )
 
@@ -16,17 +15,17 @@ import (
 //解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
 
 func mergeInterval(intervals [][]int) [][]int {
+	res := [][]int{}
 	sort.Slice(intervals, func(i, j int) bool {
 		v1, v2 := intervals[i], intervals[j]
 		return v1[0] < v2[0] || v1[0] == v2[0] && v1[1] < v2[1]
 	})
-	var res [][]int
+
 	left := intervals[0][0]
 	right := intervals[0][1]
-
 	for _, v := range intervals {
 		if v[0] <= right {
-			right = int(math.Max(float64(right), float64(v[1])))
+			right = max(right, v[1])
 		} else {
 			res = append(res, []int{left, right})
 			left = v[0]
@@ -35,4 +34,5 @@ func mergeInterval(intervals [][]int) [][]int {
 	}
 	res = append(res, []int{left, right})
 	return res
+
 }
