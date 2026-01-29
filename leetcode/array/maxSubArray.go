@@ -1,7 +1,5 @@
 package array
 
-import "math"
-
 //给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 //
 //子数组
@@ -17,10 +15,10 @@ import "math"
 
 func MaxSubArray(nums []int) int {
 	pre := 0
-	maxA := nums[0]
-	for _, v := range nums {
-		pre = int(math.Max(float64(pre+v), float64(v)))
-		maxA = int(math.Max(float64(maxA), float64(pre)))
+	maxS := nums[0]
+	for i := 0; i < len(nums); i++ {
+		pre = max(pre+nums[i], nums[i])
+		maxS = max(maxS, pre)
 	}
-	return maxA
+	return maxS
 }
