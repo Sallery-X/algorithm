@@ -6,10 +6,18 @@ import (
 )
 
 func Test_nums(t *testing.T) {
-	a := [][]byte{
-		{'1', '0', '0'},
-		{'0', '1', '0'},
-		{'0', '0', '1'},
+	/*
+		a := [][]byte{
+			{'1', '0', '0'},
+			{'0', '1', '0'},
+			{'0', '0', '1'},
+		}
+		//fmt.Println(numIslands(a))
+	*/
+	b := [][]int{
+		{0, 1, 1},
+		{1, 0, 1},
+		{1, 1, 1},
 	}
-	fmt.Println(numIslands(a))
+	fmt.Println(numIslands(b))
 }
