@@ -1,9 +1,7 @@
 package parentheses
 
-import "container/list"
-
 func isValid(s string) bool {
-	stack := list.New()
+	var stack []rune
 
 	sMap := make(map[rune]rune, 0)
 	sMap['('] = ')'
@@ -12,17 +10,17 @@ func isValid(s string) bool {
 
 	for _, v := range s {
 		if v == '(' || v == '[' || v == '{' {
-			stack.PushFront(v)
+			stack = append(stack, v)
 		} else {
-			if stack.Len() == 0 {
+			if len(stack) == 0 {
 				return false
 			}
-			r := stack.Front().Value.(rune)
+			r := stack[len(stack)-1]
 			if sMap[r] != v {
 				return false
 			}
-			stack.Remove(stack.Front())
+			stack = stack[:len(stack)-1]
 		}
 	}
-	return stack.Len() == 0
+	return len(stack) == 0
 }
