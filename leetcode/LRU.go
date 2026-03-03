@@ -63,10 +63,18 @@ func (l *LRUCache) Put(key, val int) {
 }
 
 func (l *LRUCache) addToHead(node *Node) {
-	l.head.next.pre = node
-	node.next = l.head.next
-	node.pre = l.head
+	next := l.head.next
 	l.head.next = node
+	node.next = next
+	next.pre = node
+	node.pre = l.head
+
+	/*
+		l.head.next.pre = node
+		node.next = l.head.next
+		node.pre = l.head
+		l.head.next = node
+	*/
 
 }
 func (l *LRUCache) removeTail() *Node {
