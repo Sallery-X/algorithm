@@ -89,10 +89,10 @@ func longestSubstring(s string) int {
 	left := 0
 	dup := make(map[string]int)
 	for right := 0; right < len(s); right++ {
-		if index, ok := dup[s[right:right+1]]; ok && index >= left {
+		if index, ok := dup[string(s[right])]; ok && index >= left {
 			left = index + 1
 		}
-		dup[s[right:right+1]] = right
+		dup[string(s[right])] = right
 
 		curLength := right - left + 1
 		if curLength > maxLen {
